@@ -446,7 +446,20 @@ document.addEventListener("DOMContentLoaded", function() {
   margin: 0 auto;       /* 居中 */
   display: block;       /* 保证居中有效 */
 }
-
+.image-wrapper {
+  position: relative;       /* 让内部元素可以绝对定位 */
+  display: inline-block;    /* 自适应图片大小 */
+}
+.figure-caption {
+  position: absolute;      /* 绝对定位 */
+  bottom: 8px;             /* 距离底部 */
+  left: 12px;              /* 距离左边 */
+  font-size: 0.9rem;
+  color: #555;
+  background: rgba(255,255,255,0.7); /* 半透明背景更易读，可选 */
+  padding: 2px 6px;
+  border-radius: 4px;
+}
   </style>
   
 
