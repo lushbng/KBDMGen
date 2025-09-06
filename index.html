@@ -282,42 +282,98 @@
 </section>
 
 <!-- Image carousel  图片轮播只能图片 -->
-<!-- <section class="hero is-small">
+<section class="hero is-small">
   <div class="hero-body">
     <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/pdfs/overview1.pdf" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/pdfs/vis.pdf" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div> -->
-      <!-- <div class="item"> -->
-        <!-- Your image here -->
-        <!-- <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div> -->
-     <!-- <div class="item"> -->
-      <!-- Your image here -->
-      <!-- <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div> -->
-  <!-- </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
 
+      <!-- 总标题 -->
+      <h1 class="title has-text-centered mb-4">Visualization of Methods</h1>
+
+      <!-- 控制按钮 -->
+      <div class="buttons is-centered mb-4">
+        <button class="button is-link carousel-btn" data-index="0">Comparison</button>
+        <button class="button is-link carousel-btn" data-index="1">Transfer</button>
+        <button class="button is-link carousel-btn" data-index="2">Multi-Person</button>
+      </div>
+
+      <!-- Carousel 容器 -->
+      <div id="results-carousel" class="carousel results-carousel has-text-centered">
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item">
+          <img src="static/pdfs/comparison.pdf" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <h2 class="subtitle mt-2">Comparison Image</h2>
+        </div>
+
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item">
+          <img src="static/pdfs/transfer.pdf" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <h2 class="subtitle mt-2">Transfer Image</h2>
+        </div>
+
+        <!-- Carousel Item 3 -->
+        <div class="carousel-item">
+          <img src="static/pdfs/multiperson.pdf" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <h2 class="subtitle mt-2">Multi-Person Image</h2>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 样式 -->
+<style>
+.carousel-item {
+  display: none;          /* 默认隐藏 */
+}
+.carousel-item.active {
+  display: block;         /* 显示当前图片 */
+}
+</style>
+
+<!-- JS 控制轮播 -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll("#results-carousel .carousel-item");
+  const buttons = document.querySelectorAll(".carousel-btn");
+  let currentIndex = 0;
+  let interval = null;
+
+  // 显示指定 index
+  function showSlide(index) {
+    items.forEach((item, i) => {
+      item.classList.toggle("active", i === index);
+    });
+    currentIndex = index;
+  }
+
+  // 按钮点击控制
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = parseInt(btn.dataset.index);
+      showSlide(index);
+      resetInterval();
+    });
+  });
+
+  // 自动轮播
+  function startInterval() {
+    interval = setInterval(() => {
+      let nextIndex = (currentIndex + 1) % items.length;
+      showSlide(nextIndex);
+    }, 3000); // 每 3 秒轮播
+  }
+
+  function resetInterval() {
+    clearInterval(interval);
+    startInterval();
+  }
+
+  // 初始化
+  showSlide(0);
+  startInterval();
+});
+</script>
 
 
 
