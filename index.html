@@ -291,26 +291,21 @@
 
       <!-- 控制按钮 -->
       <div class="buttons is-centered mb-4">
-        <button class="button is-link carousel-btn" data-index="0">Comparison</button>
+        <button class="button is-link carousel-btn is-active" data-index="0">Comparison</button>
         <button class="button is-link carousel-btn" data-index="1">Transfer</button>
         <button class="button is-link carousel-btn" data-index="2">Multi-Person</button>
       </div>
 
       <!-- Carousel 容器 -->
       <div id="results-carousel" class="carousel results-carousel has-text-centered">
-        <!-- Carousel Item 1 -->
-        <div class="carousel-item">
+        <div class="carousel-item active">
           <img src="static/images/vis.jpg" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
           <h2 class="subtitle mt-2">Comparison Image</h2>
         </div>
-
-        <!-- Carousel Item 2 -->
         <div class="carousel-item">
           <img src="static/images/overview1.jpg" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
           <h2 class="subtitle mt-2">Transfer Image</h2>
         </div>
-
-        <!-- Carousel Item 3 -->
         <div class="carousel-item">
           <img src="static/images/carousel1.jpg" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
           <h2 class="subtitle mt-2">Multi-Person Image</h2>
@@ -321,17 +316,32 @@
   </div>
 </section>
 
-<!-- 样式 -->
 <style>
+/* Carousel 样式 */
+#results-carousel {
+  position: relative;
+  min-height: 300px; /* 根据图片高度调整 */
+}
 .carousel-item {
-  display: none;          /* 默认隐藏 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 .carousel-item.active {
-  display: block;         /* 显示当前图片 */
+  opacity: 1;
+  position: relative;
+}
+
+/* 按钮高亮 */
+.carousel-btn.is-active {
+  background-color: #3273dc !important;
+  color: white !important;
 }
 </style>
 
-<!-- JS 控制轮播 -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const items = document.querySelectorAll("#results-carousel .carousel-item");
@@ -339,15 +349,12 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentIndex = 0;
   let interval = null;
 
-  // 显示指定 index
   function showSlide(index) {
-    items.forEach((item, i) => {
-      item.classList.toggle("active", i === index);
-    });
+    items.forEach((item, i) => item.classList.toggle("active", i === index));
+    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
     currentIndex = index;
   }
 
-  // 按钮点击控制
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
       const index = parseInt(btn.dataset.index);
@@ -356,12 +363,11 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // 自动轮播
   function startInterval() {
     interval = setInterval(() => {
-      let nextIndex = (currentIndex + 1) % items.length;
-      showSlide(nextIndex);
-    }, 3000); // 每 3 秒轮播
+      currentIndex = (currentIndex + 1) % items.length;
+      showSlide(currentIndex);
+    }, 3000);
   }
 
   function resetInterval() {
@@ -374,6 +380,7 @@ document.addEventListener("DOMContentLoaded", function() {
   startInterval();
 });
 </script>
+
 
 
 
