@@ -141,7 +141,7 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
-      <div class="column is-five-sixths has-text-centered">
+      <div class="column custom-wide-column has-text-centered">
 
         <!-- Abstract -->
         <h2 class="title is-3">Abstract</h2>
@@ -160,7 +160,7 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
-      <div class="column is-five-sixths has-text-centered">
+      <div class="column custom-wide-column has-text-centered">
 
         <!-- Visualization Title -->
         <h2 class="title is-3" style="margin-top: 1rem;">Visualization of Methods</h2>
@@ -441,6 +441,11 @@ document.addEventListener("DOMContentLoaded", function() {
   height: auto;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.custom-wide-column {
+  width: 95%;   /* 比五分之六更宽 */
+  max-width: 95%; /* 保证不会超出父容器 */
+  margin: 0 auto; /* 居中 */
 }
   </style>
   
