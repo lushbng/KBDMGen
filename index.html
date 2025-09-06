@@ -202,8 +202,9 @@
   </div>
 </section>
 
+
 <!-- 样式 -->
-<style>
+<!-- <style>
 .carousel-item {
   display: none; /* 默认隐藏 */
 }
@@ -223,7 +224,7 @@
   margin-top: 0.25rem;    /* 与图片保持间距 */
   margin-left: 0.25rem;   /* 与图片左边对齐 */
 }
-</style>
+</style> -->
 
 <!-- JS -->
 <script>
@@ -429,7 +430,96 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
+<style>
+  /* 全局 */
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 1.6;
+    color: #2e2e2e;
+    background-color: #f9f9f9;
+  }
+  
+  /* Section 美化 */
+  section {
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  /* Section 标题 */
+  section h1.title,
+  section h2.title {
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Abstract / content */
+  .content p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+  
+  /* Carousel 图片和图注 */
+  .carousel-item img,
+  .hero.teaser img,
+  figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  
+  .figure-caption,
+  figcaption {
+    font-size: 0.875rem;
+    color: #555555;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+  }
+  
+  /* Carousel 按钮 */
+  .carousel-btn {
+    transition: 0.3s;
+  }
+  .carousel-btn.is-active,
+  .carousel-btn:hover {
+    background-color: #3273dc !important;
+    color: white !important;
+  }
+  
+  /* 表格美化 */
+  table.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  }
+  table.table th,
+  table.table td {
+    padding: 0.75rem 1rem;
+  }
+  table.table tbody tr:nth-child(even) {
+    background-color: #f4f6f8;
+  }
+  
+  /* Footer */
+  footer.footer {
+    padding: 2rem 1rem;
+    background-color: #222222;
+    color: #ffffff;
+    text-align: center;
+  }
+  footer.footer a {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  </style>
+  
 
 <!-- Paper poster -->
 <!-- <section class="hero is-small is-light">
