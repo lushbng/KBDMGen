@@ -349,9 +349,9 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>32.45</td>
           </tr>
         </tbody>
-        <tbody style="border-top: 3px solid #000;"> 
+        <tbody> 
           <tr>
-            <td rowspan="1" class="has-text-centered is-vcentered">Laion-Human<sup>&dagger;</sup></td>
+            <td rowspan="2" class="has-text-centered is-vcentered">Laion-Human<sup>&dagger;</sup></td>
             <td>SD* <a href="https://arxiv.org/abs/2112.10752" target="_blank">[StableDiffusion]</a></td>
             <td>0.24</td>
             <td>55.71</td>
@@ -360,6 +360,15 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>3.36</td>
             <td>33.33</td>
           </tr>
+          <tr>
+            <td>Stable-Pose <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/78b9d95f6bb13b080c2a68bdea54cdbb-Abstract-Conference.html" target="_blank">[Stable-Pose]</a></td>
+            <td>48.88</td>
+            <td>70.83</td>
+            <td>1.50</td>
+            <td>11.12</td>
+            <td>2.35</td>
+            <td>32.60</td>
+          </tr>
       </table>
     </div>
   </div>
@@ -367,143 +376,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<div class="container is-max-desktop">
-  <h2 class="title is-4 has-text-centered mt-6">Quantitative Results</h2>
-  <!-- 包裹表格的横向滚动容器，适配小屏幕 -->
-  <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0;">
-    <table class="table is-striped is-hoverable is-fullwidth">
-      <thead>
-        <tr>
-          <th>Dataset</th>
-          <th>Methods</th>
-          <th>AP (%)↑</th>
-          <th>SAP (%)↑</th>
-          <th>PCE ↓</th>
-          <th>FID ↓</th>
-          <th>KID ↓</th>
-          <th>CLIP-Score ↑</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="6">Human-Art</td>
-          <td>SD* (Rombach et al. 2022)</td>
-          <td>0.24</td>
-          <td>55.71</td>
-          <td>2.30</td>
-          <td>11.53</td>
-          <td>3.36</td>
-          <td class="has-background-success-light">33.33</td>
-        </tr>
-        <tr>
-          <td>T2I-Adapter (Mou et al. 2024)</td>
-          <td>27.22</td>
-          <td>65.65</td>
-          <td>1.75</td>
-          <td>11.92</td>
-          <td>2.73</td>
-          <td class="has-background-info-light">33.27</td>
-        </tr>
-        <tr>
-          <td>ControlNet (Zhang, Rao, and Agrawala 2023)</td>
-          <td>39.52</td>
-          <td>69.19</td>
-          <td>1.54</td>
-          <td class="has-background-info-light">11.01</td>
-          <td class="has-background-success-light">2.23</td>
-          <td>32.65</td>
-        </tr>
-        <tr>
-          <td>Uni-ControlNet (Zhao et al. 2024)</td>
-          <td>41.94</td>
-          <td>69.32</td>
-          <td>1.48</td>
-          <td>14.63</td>
-          <td class="has-background-info-light">2.30</td>
-          <td>32.51</td>
-        </tr>
-        <tr>
-          <td>HumanSD (Ju et al. 2023b)</td>
-          <td class="has-background-info-light">44.57</td>
-          <td class="has-background-info-light">69.68</td>
-          <td class="has-background-success-light">1.37</td>
-          <td class="has-background-success-light">10.03</td>
-          <td>2.70</td>
-          <td>32.24</td>
-        </tr>
-        <tr>
-          <td>GRPose (Ours)</td>
-          <td class="has-background-success-light">49.50</td>
-          <td class="has-background-success-light">70.84</td>
-          <td class="has-background-info-light">1.43</td>
-          <td>13.76</td>
-          <td>2.53</td>
-          <td>32.31</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td rowspan="6">LAION-Human</td>
-          <td>SD* (Rombach et al. 2022)</td>
-          <td>0.73</td>
-          <td>44.47</td>
-          <td>2.45</td>
-          <td class="has-background-success-light">4.53</td>
-          <td>4.80</td>
-          <td class="has-background-info-light">32.32</td>
-        </tr>
-        <tr>
-          <td>T2I-Adapter* (Mou et al. 2024)</td>
-          <td>36.65</td>
-          <td>63.64</td>
-          <td>1.62</td>
-          <td>6.77</td>
-          <td>5.44</td>
-          <td>32.30</td>
-        </tr>
-        <tr>
-          <td>ControlNet* (Zhang, Rao, and Agrawala 2023)</td>
-          <td>44.90</td>
-          <td class="has-background-info-light">66.74</td>
-          <td>1.55</td>
-          <td>7.53</td>
-          <td>6.53</td>
-          <td>32.31</td>
-        </tr>
-        <tr>
-          <td>Uni-ControlNet (Zhao et al. 2024)</td>
-          <td>50.83</td>
-          <td>66.16</td>
-          <td>1.41</td>
-          <td>6.82</td>
-          <td class="has-background-success-light">4.52</td>
-          <td class="has-background-success-light">32.39</td>
-        </tr>
-        <tr>
-          <td>HumanSD (Ju et al. 2023b)</td>
-          <td class="has-background-info-light">50.95</td>
-          <td>65.84</td>
-          <td class="has-background-success-light">1.25</td>
-          <td class="has-background-info-light">5.62</td>
-          <td>7.48</td>
-          <td>30.85</td>
-        </tr>
-        <tr>
-          <td>GRPose (Ours)</td>
-          <td class="has-background-success-light">57.01</td>
-          <td class="has-background-success-light">67.20</td>
-          <td class="has-background-info-light">1.29</td>
-          <td>6.52</td>
-          <td class="has-background-info-light">4.65</td>
-          <td>32.12</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="has-text-centered mt-4">
-    Results on Human-Art and LAION-Human datasets. The best results and the second best results are marked in green and blue respectively. Results marked with asterisk (*) are evaluated on the released models.
-  </p>
-</div>
+
 
 
 
