@@ -349,7 +349,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <td>32.45</td>
           </tr>
         </tbody>
-        <tbody>
+        <tbody class="new-dataset-tbody"> 
           <tr>
             <td rowspan="1" class="has-text-centered is-vcentered">Laion-Human<sup>&dagger;</sup></td>
             <td>SD* <a href="https://arxiv.org/abs/2112.10752" target="_blank">[StableDiffusion]</a></td>
@@ -470,6 +470,9 @@ document.addEventListener("DOMContentLoaded", function() {
   width: 100%;   /* 比五分之六更宽 */
   max-width: 100%; /* 保证不会超出父容器 */
   margin: 0 auto; /* 居中 */
+}
+.new-dataset-tbody tr:first-child {
+  border-top: 3px solid #000; /* 3px 粗的黑色实线，可根据需要调整颜色和粗细 */
 }
   </style>
   
