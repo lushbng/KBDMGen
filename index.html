@@ -136,24 +136,82 @@
   </section>
   
 
-<!-- Teaser video-->
-<!-- <section class="hero teaser">
+<!-- Paper Abstract + Visualization Section -->
+<section class="section hero is-light">
   <div class="container is-max-desktop">
-    <div class="hero-body has-text-centered">
-      <figure>
-        <img src="static/images/overview1.jpg" alt="Overview illustration" style="width:100%; height:auto; border-radius: 8px;">
-        <figcaption class="has-text-grey is-size-6" style="margin-top: 10px;">
-          Overview of our method. The visual Knowledge Base (KB) provides global guidance, while the Dynamic pose Mask (DM) enables fine-grained local control. Together, they achieve unified control of both global semantics and local details.
-        </figcaption>
-      </figure>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-centered">
+
+        <!-- Abstract -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified" style="margin-bottom: 2rem;">
+          <p>
+            Recent methods using diffusion models have made significant progress in human image generation with various control signals such as pose priors. In portrait generation, both the accuracy of human pose and the overall visual quality are crucial for realistic synthesis. Most existing methods focus on controlling the accuracy of generated poses, but ignore the quality assurance of the entire image. In order to ensure the global image quality and pose accuracy, we propose Knowledge-Based Global Guidance and Dynamic pose Masking for human image Generation (KB-DMGen). The Knowledge Base (KB) is designed not only to enhance pose accuracy but also to leverage image feature information to maintain overall image quality. Dynamic Masking (DM) dynamically adjusts the importance of pose-related regions. Experiments demonstrate the effectiveness of our model, achieving new state-of-the-art results in terms of AP and CAP on the HumanArt dataset. The code will be made publicly available.
+          </p>
+        </div>
+
+        <!-- Visualization Title -->
+        <h2 class="title is-3" style="margin-top: 2.5rem;">Visualization of Methods</h2>
+
+        <!-- 控制按钮 -->
+        <div class="buttons is-centered mb-4" style="margin-top: 1rem;">
+          <button class="button is-link carousel-btn" data-index="0">Comparison</button>
+          <button class="button is-link carousel-btn" data-index="1">Transfer</button>
+          <button class="button is-link carousel-btn" data-index="2">Multi-Person</button>
+        </div>
+
+        <!-- 图片容器 -->
+        <div id="results-carousel" class="has-text-centered" style="margin-top: 1.5rem;">
+
+          <!-- Carousel Item 1 -->
+          <div class="carousel-item">
+            <img src="static/images/vis.jpg" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
+            <div class="figure-caption">Fig. 1: Comparison Image.</div>
+          </div>
+
+          <!-- Carousel Item 2 -->
+          <div class="carousel-item">
+            <img src="static/images/overview1.jpg" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
+            <div class="figure-caption">Fig. 2: Transfer Image.</div>
+          </div>
+
+          <!-- Carousel Item 3 -->
+          <div class="carousel-item">
+            <img src="static/images/carousel1.jpg" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
+            <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
+          </div>
+
+        </div>
+
+      </div>
     </div>
   </div>
-</section> -->
+</section>
 
+<!-- JS -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll("#results-carousel .carousel-item");
+  const buttons = document.querySelectorAll(".carousel-btn");
 
-<!-- End teaser video -->
+  function showSlide(index) {
+    items.forEach(item => item.style.display = "none");
+    items[index].style.display = "block";
+    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
+  }
 
-<!-- Paper abstract -->
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = parseInt(btn.dataset.index);
+      showSlide(index);
+    });
+  });
+
+  showSlide(0);
+});
+</script>
+
+<!-- Paper abstract
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -210,28 +268,6 @@
 </section>
 
 
-<!-- 样式 -->
-<!-- <style>
-.carousel-item {
-  display: none; /* 默认隐藏 */
-}
-.carousel-item.active {
-  display: block; /* 显示选中图片 */
-}
-.carousel-btn.is-active {
-  background-color: #3273dc;
-  color: white;
-}
-
-/* 图注：显示在图片下方 */
-.figure-caption {
-  font-size: 0.875rem;
-  color: #4a4a4a;
-  text-align: left;       /* 左对齐 */
-  margin-top: 0.25rem;    /* 与图片保持间距 */
-  margin-left: 0.25rem;   /* 与图片左边对齐 */
-}
-</style> -->
 
 <!-- JS -->
 <script>
@@ -260,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // 默认显示第一张图片
   showSlide(0);
 });
-</script>
+</script> -->
 
 
 <section class="section">
