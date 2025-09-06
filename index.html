@@ -156,7 +156,6 @@
   </div>
 </section>
 
-<!-- Visualization Section -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -174,7 +173,6 @@
 
         <!-- 图片容器 -->
         <div id="results-carousel" class="has-text-centered" style="margin-top: 1.5rem;">
-
           <!-- Carousel Item 1 -->
           <div class="carousel-item">
             <img src="static/images/vis.jpg" alt="Comparison"  class="large-image">
@@ -184,19 +182,16 @@
               Our method preserves both global image quality and accurate pose alignment, producing more realistic and visually consistent results.
             </div>
           </div>
-
           <!-- Carousel Item 2 -->
           <div class="carousel-item">
             <img src="static/images/overview1.jpg" alt="Transfer"  class="large-image">
             <div class="figure-caption">Fig. 2: Transfer Image.</div>
           </div>
-
           <!-- Carousel Item 3 -->
           <div class="carousel-item">
             <img src="static/images/carousel1.jpg" alt="Multi-Person"  class="large-image">
             <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
           </div>
-
         </div>
 
       </div>
@@ -205,26 +200,51 @@
 </section>
 
 
-<!-- JS -->
+<!-- JS（新增自动轮播功能） -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const items = document.querySelectorAll("#results-carousel .carousel-item");
   const buttons = document.querySelectorAll(".carousel-btn");
+  const totalSlides = items.length; // 轮播图总数（3张）
+  let currentIndex = 0; // 当前显示的图片索引
+  let carouselInterval; // 自动轮播的定时器（用于后续清除）
+  const autoPlayTime = 5000; // 自动轮播间隔（5秒，可按需调整）
 
+  // 1. 核心：显示指定索引的图片（复用原有逻辑，增加索引更新）
   function showSlide(index) {
+    // 边界处理：索引超出范围时重置（如最后一张后回到第一张）
+    currentIndex = index < 0 ? totalSlides - 1 : index % totalSlides;
+    
+    // 隐藏所有图片，显示当前图片
     items.forEach(item => item.style.display = "none");
-    items[index].style.display = "block";
-    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
+    items[currentIndex].style.display = "block";
+    
+    // 按钮激活状态同步
+    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === currentIndex));
   }
 
+  // 2. 自动轮播函数：每隔autoPlayTime切换到下一张
+  function startAutoPlay() {
+    // 清除已有定时器（避免重复创建）
+    clearInterval(carouselInterval);
+    // 新建定时器：每autoPlayTime毫秒，当前索引+1并显示
+    carouselInterval = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, autoPlayTime);
+  }
+
+  // 3. 点击按钮切换图片：点击后暂停自动轮播，切换完成后重启
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const index = parseInt(btn.dataset.index);
-      showSlide(index);
+      const targetIndex = parseInt(btn.dataset.index);
+      showSlide(targetIndex); // 切换到点击对应的图片
+      startAutoPlay(); // 重启自动轮播（避免点击后轮播停止）
     });
   });
 
+  // 4. 初始化：显示第一张图片 + 启动自动轮播
   showSlide(0);
+  startAutoPlay();
 });
 </script>
 
