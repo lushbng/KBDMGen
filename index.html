@@ -438,12 +438,15 @@ document.addEventListener("DOMContentLoaded", function() {
     text-decoration: underline;
   }
   .large-image {
-  max-width: 760px;
-  width: 100%;
-  height: auto;
+  width: 60%;          /* 占满父容器 */
+  height: auto;         /* 保持比例 */
+  max-width: 100%;      /* 不会超出父容器 */
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin: 0 auto;       /* 居中 */
+  display: block;       /* 保证居中有效 */
 }
+
   </style>
   
 
