@@ -157,8 +157,6 @@
 </section>
 
 <!-- Visualization Section -->
-<!-- Visualization Section -->
-<!-- Visualization Section -->
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -179,26 +177,20 @@
 
           <!-- Carousel Item 1 -->
           <div class="carousel-item">
-            <div class="image-wrapper">
-              <img src="static/images/vis.jpg" alt="Comparison" class="large-image">
-              <div class="figure-caption">Fig. 1: Comparison Image.</div>
-            </div>
+            <img src="static/images/vis.jpg" alt="Comparison"  class="large-image">
+            <div class="figure-caption">Fig. 1: Comparison Image.</div>
           </div>
 
           <!-- Carousel Item 2 -->
           <div class="carousel-item">
-            <div class="image-wrapper">
-              <img src="static/images/overview1.jpg" alt="Transfer" class="large-image">
-              <div class="figure-caption">Fig. 2: Transfer Image.</div>
-            </div>
+            <img src="static/images/overview1.jpg" alt="Transfer"  class="large-image">
+            <div class="figure-caption">Fig. 2: Transfer Image.</div>
           </div>
 
           <!-- Carousel Item 3 -->
           <div class="carousel-item">
-            <div class="image-wrapper">
-              <img src="static/images/carousel1.jpg" alt="Multi-Person" class="large-image">
-              <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
-            </div>
+            <img src="static/images/carousel1.jpg" alt="Multi-Person"  class="large-image">
+            <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
           </div>
 
         </div>
@@ -207,7 +199,6 @@
     </div>
   </div>
 </section>
-
 
 
 <!-- JS -->
@@ -398,6 +389,15 @@ document.addEventListener("DOMContentLoaded", function() {
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   }
   
+  .figure-caption,
+  figcaption {
+    font-size: 0.875rem;
+    color: #555555;
+    text-align: left;
+    margin-top: 0.5rem;
+    margin-left: 0.25rem;
+  }
+  
   /* Carousel 按钮 */
   .carousel-btn {
     transition: 0.3s;
@@ -436,27 +436,11 @@ document.addEventListener("DOMContentLoaded", function() {
     text-decoration: underline;
   }
   .large-image {
-  width: 75%;          /* 占满父容器 */
-  height: auto;         /* 保持比例 */
-  max-width: 100%;      /* 不会超出父容器 */
+  max-width: 1200px;
+  width: 100%;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  margin: 0 auto;       /* 居中 */
-  display: block;       /* 保证居中有效 */
-}
-.image-wrapper {
-  position: relative;       /* 让内部元素可以绝对定位 */
-  display: inline-block;    /* 自适应图片大小 */
-}
-.figure-caption {
-  position: absolute;      /* 绝对定位 */
-  bottom: 8px;             /* 距离底部 */
-  left: 12px;              /* 距离左边 */
-  font-size: 0.9rem;
-  color: #555;
-  background: rgba(255,255,255,0.7); /* 半透明背景更易读，可选 */
-  padding: 2px 6px;
-  border-radius: 4px;
 }
   </style>
   
