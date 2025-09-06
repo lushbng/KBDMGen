@@ -161,6 +161,100 @@
   </div>
 </section>
 
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+
+      <!-- 总标题 -->
+      <h1 class="title has-text-centered mb-4">Visualization of Methods</h1>
+
+      <!-- 控制按钮 -->
+      <div class="buttons is-centered mb-4">
+        <button class="button is-link carousel-btn" data-index="0">Comparison</button>
+        <button class="button is-link carousel-btn" data-index="1">Transfer</button>
+        <button class="button is-link carousel-btn" data-index="2">Multi-Person</button>
+      </div>
+
+      <!-- 图片容器 -->
+      <div id="results-carousel" class="has-text-centered">
+
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item">
+          <img src="static/images/vis.jpg" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <div class="figure-caption">Fig. 1: Comparison Image.</div>
+        </div>
+
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item">
+          <img src="static/images/overview1.jpg" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <div class="figure-caption">Fig. 2: Transfer Image.</div>
+        </div>
+
+        <!-- Carousel Item 3 -->
+        <div class="carousel-item">
+          <img src="static/images/carousel1.jpg" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 样式 -->
+<style>
+.carousel-item {
+  display: none; /* 默认隐藏 */
+}
+.carousel-item.active {
+  display: block; /* 显示选中图片 */
+}
+.carousel-btn.is-active {
+  background-color: #3273dc;
+  color: white;
+}
+
+/* 图注：显示在图片下方 */
+.figure-caption {
+  font-size: 0.875rem;
+  color: #4a4a4a;
+  text-align: left;       /* 左对齐 */
+  margin-top: 0.25rem;    /* 与图片保持间距 */
+  margin-left: 0.25rem;   /* 与图片左边对齐 */
+}
+</style>
+
+<!-- JS -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const items = document.querySelectorAll("#results-carousel .carousel-item");
+  const buttons = document.querySelectorAll(".carousel-btn");
+
+  function showSlide(index) {
+    // 隐藏所有图片
+    items.forEach(item => item.style.display = "none");
+    // 显示目标图片
+    items[index].style.display = "block";
+
+    // 高亮按钮
+    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
+  }
+
+  // 按钮点击事件
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const index = parseInt(btn.dataset.index);
+      showSlide(index);
+    });
+  });
+
+  // 默认显示第一张图片
+  showSlide(0);
+});
+</script>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-4 has-text-centered">Results on Human-Art dataset</h2>
@@ -281,106 +375,7 @@
   </div>
 </section>
 
-<!-- Image carousel  图片轮播只能图片 -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
 
-      <!-- 总标题 -->
-      <h1 class="title has-text-centered mb-4">Visualization of Methods</h1>
-
-      <!-- 控制按钮 -->
-      <div class="buttons is-centered mb-4">
-        <button class="button is-link carousel-btn" data-index="0">Comparison</button>
-        <button class="button is-link carousel-btn" data-index="1">Transfer</button>
-        <button class="button is-link carousel-btn" data-index="2">Multi-Person</button>
-      </div>
-
-      <!-- 图片容器 -->
-      <div id="results-carousel" class="has-text-centered">
-
-        <!-- Carousel Item 1 -->
-        <div class="carousel-item" style="position: relative; display: inline-block;">
-          <img src="static/images/vis.jpg" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <div class="figure-caption">Fig. 1: Comparison Image.</div>
-        </div>
-
-        <!-- Carousel Item 2 -->
-        <div class="carousel-item" style="position: relative; display: inline-block;">
-          <img src="static/images/overview1.jpg" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <div class="figure-caption">Fig. 2: Transfer Image.</div>
-        </div>
-
-        <!-- Carousel Item 3 -->
-        <div class="carousel-item" style="position: relative; display: inline-block;">
-          <img src="static/images/carousel1.jpg" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 样式 -->
-<style>
-.carousel-item {
-  display: none; /* 默认隐藏 */
-}
-.carousel-item.active {
-  display: inline-block; /* 显示选中图片 */
-}
-.carousel-btn.is-active {
-  background-color: #3273dc;
-  color: white;
-}
-
-/* 图注样式：左下角显示 */
-.figure-caption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  font-size: 0.875rem;
-  color: #4a4a4a;
-  padding: 0.3rem 0.5rem;
-  background-color: rgba(255, 255, 255, 0.7); /* 半透明底色提高可读性 */
-  border-top-right-radius: 4px; /* 圆角美观 */
-}
-</style>
-
-<!-- JS -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const items = document.querySelectorAll("#results-carousel .carousel-item");
-  const buttons = document.querySelectorAll(".carousel-btn");
-
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    // 隐藏所有图片
-    items.forEach(item => item.style.display = "none");
-    // 显示目标图片
-    items[index].style.display = "inline-block";
-
-    // 高亮按钮
-    buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
-
-    currentIndex = index;
-  }
-
-  // 按钮点击事件
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const index = parseInt(btn.dataset.index);
-      showSlide(index);
-    });
-  });
-
-  // 默认显示第一张图片
-  showSlide(0);
-});
-</script>
 
 <!-- Youtube video -->
 <!-- <section class="hero is-small is-light">
