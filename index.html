@@ -298,18 +298,25 @@
 
       <!-- 图片容器 -->
       <div id="results-carousel" class="has-text-centered">
-        <div class="carousel-item">
+
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item" style="position: relative; display: inline-block;">
           <img src="static/images/vis.jpg" alt="Comparison" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <h2 class="subtitle mt-2">Comparison Image</h2>
+          <div class="figure-caption">Fig. 1: Comparison Image.</div>
         </div>
-        <div class="carousel-item">
+
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item" style="position: relative; display: inline-block;">
           <img src="static/images/overview1.jpg" alt="Transfer" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <h2 class="subtitle mt-2">Transfer Image</h2>
+          <div class="figure-caption">Fig. 2: Transfer Image.</div>
         </div>
-        <div class="carousel-item">
+
+        <!-- Carousel Item 3 -->
+        <div class="carousel-item" style="position: relative; display: inline-block;">
           <img src="static/images/carousel1.jpg" alt="Multi-Person" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <h2 class="subtitle mt-2">Multi-Person Image</h2>
+          <div class="figure-caption">Fig. 3: Multi-Person Image.</div>
         </div>
+
       </div>
 
     </div>
@@ -322,11 +329,23 @@
   display: none; /* 默认隐藏 */
 }
 .carousel-item.active {
-  display: block; /* 显示选中图片 */
+  display: inline-block; /* 显示选中图片 */
 }
 .carousel-btn.is-active {
   background-color: #3273dc;
   color: white;
+}
+
+/* 图注样式：左下角显示 */
+.figure-caption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 0.875rem;
+  color: #4a4a4a;
+  padding: 0.3rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.7); /* 半透明底色提高可读性 */
+  border-top-right-radius: 4px; /* 圆角美观 */
 }
 </style>
 
@@ -335,13 +354,14 @@
 document.addEventListener("DOMContentLoaded", function() {
   const items = document.querySelectorAll("#results-carousel .carousel-item");
   const buttons = document.querySelectorAll(".carousel-btn");
+
   let currentIndex = 0;
 
   function showSlide(index) {
     // 隐藏所有图片
     items.forEach(item => item.style.display = "none");
     // 显示目标图片
-    items[index].style.display = "block";
+    items[index].style.display = "inline-block";
 
     // 高亮按钮
     buttons.forEach((btn, i) => btn.classList.toggle("is-active", i === index));
@@ -357,12 +377,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // 初始化显示第一张图片
+  // 默认显示第一张图片
   showSlide(0);
 });
 </script>
-
-
 
 <!-- Youtube video -->
 <!-- <section class="hero is-small is-light">
